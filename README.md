@@ -33,3 +33,5 @@ Run queue worker:
 ```
 
 Now you can access the API on http://localhost
+
+Application uses Redis Lock mechanism to prevent concurrent creation of the reservation. Before a reservation is created, the offer is locked. The offer is updated, checked to ensure it meets the conditions, and then a reservation is created in transaction. Only after that is the offer unlocked. 
